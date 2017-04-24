@@ -262,7 +262,7 @@ def parseAllRUInfo(fileName):
     RuDataList = []
     #the column title in the excel
     tabInfo = []
-    with open(fileName, newline='') as csvfile:
+    with open(fileName) as csvfile:
         csvreader = csv.reader(csvfile)
         bandPattern = re.compile(r'^\d+\D*')
         
@@ -273,7 +273,7 @@ def parseAllRUInfo(fileName):
         #remove whitespace and return line the tabinfo string list
         for (i,s) in enumerate(tabInfo):
             tabInfo[i] = s.replace("\n", "").replace(" ", "").strip()
-        #print (tabInfo)
+        print (tabInfo)
         
         #from line 8, we have the RU data info, so here we jump line 6 and line 7
         for i in range(2):
