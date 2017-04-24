@@ -1,0 +1,7 @@
+WithoutBandInfo:
+RU1: (RuType:RRU22F3B1a,B18,B28d),  L14B
+
+
+WithBandInfo:
+RU1: (RuType:RRU22F3B1a,B18,B28d, Band:1A, KRC:KRC 118 166/1),  L14B
+RU1: (RuType:RRU22F3B1a,B18,B28d, Band:28D, KRC:KRC 118 166/1),  L14B

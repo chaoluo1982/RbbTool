@@ -1,0 +1,6 @@
+WithoutBandInfo:
+RU1: (RuType:Radio2012),  L16B
+
+
+WithBandInfo:
+RU1: (RuType:Radio2012, Band:32A, KRC:KRC 161 604/1),  L16B

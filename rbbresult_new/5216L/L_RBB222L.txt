@@ -1,0 +1,18 @@
+WithoutBandInfo:
+RU1: (RuType:RRU22F3B1a,B18,B28d), 
+RU1: (RuType:RRUS32), 
+RU1: (RuType:Radio4407), 
+
+
+WithBandInfo:
+RU1: (RuType:RRU22F3B1a,B18,B28d, Band:1A, KRC:KRC 118 166/1), 
+RU1: (RuType:RRUS32, Band:2, KRC:KRC 161 414/1), 
+RU1: (RuType:Radio4407, Band:3, KRC:KRC 161 660/1), 
+RU1: (RuType:Radio4407, Band:3, KRC:KRC 161 660/1), 
+RU1: (RuType:RRUS32, Band:3, KRC:KRC 161 413/1), 
+RU1: (RuType:RRUS32, Band:4, KRC:KRC 161 416/1), 
+RU1: (RuType:RRUS32, Band:7, KRC:KRC 161 412/1), 
+RU1: (RuType:RRUS32, Band:7A, KRC:KRC 161 602/1), 
+RU1: (RuType:RRU22F3B1a,B18,B28d, Band:28D, KRC:KRC 118 166/1), 
+RU1: (RuType:RRUS32, Band:30, KRC:KRC 161 423/1), 
+RU1: (RuType:RRUS32, Band:66A, KRC:KRC 161 583/1), 

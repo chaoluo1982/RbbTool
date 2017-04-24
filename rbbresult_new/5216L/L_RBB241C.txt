@@ -1,0 +1,6 @@
+WithoutBandInfo:
+RU1: (RuType:AIR2488B3AB1PB7P), 
+
+
+WithBandInfo:
+RU1: (RuType:AIR2488B3AB1PB7P, Band:3, KRC:KRD 901 142/1), 

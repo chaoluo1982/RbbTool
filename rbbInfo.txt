@@ -1,0 +1,372 @@
+Supported RAT in RBB
+
+
+
+Singel mode GSM
+G(DU)
+Pre-study plan
+G(DU)
+G(BB)
+Pre-study plan
+Pre-study plan
+G(BB)
+G(BB)
+Singel mode WCDMA
+W(DU)
+Pre-study plan
+Pre-study plan
+W(DU)
+W(DU)
+W(BB)
+Pre-study plan
+Pre-study plan
+Pre-study plan
+W(BB)
+W(BB)
+W(BB)
+Singel mode LTE FDD
+L-FDD(DU)
+Pre-study plan
+Pre-study plan
+Pre-study plan
+L-FDD(DU)
+L-FDD(DU)
+L-FDD(DU)
+L-FDD(BB)
+Pre-study plan
+Pre-study plan
+Pre-study plan
+L-FDD(BB)
+L-FDD(BB)
+L-FDD(BB)
+Singel mode LTE TDD
+L-TDD(DU)
+Pre-study plan
+Pre-study plan
+L-TDD(DU)
+L-TDD(DU)
+L-TDD(BB)
+Pre-study plan
+Pre-study plan
+Pre-study plan
+L-TDD(BB)
+L-TDD(BB)
+L-TDD(BB)
+Singel mode CDMA
+C(DU)
+C(DU)
+mixed mode G + W
+G(DU) + W(DU)
+Pre-study plan
+G(DU) + W(DU)
+G(DU) + W(BB)
+Pre-study plan
+Pre-study plan
+G(DU) + W(BB)
+G(DU) + W(BB)
+G(BB) + W(DU)
+Pre-study plan
+Pre-study plan
+G(BB) + W(DU)
+G(BB) + W(DU)
+G(BB) + W(BB)
+Pre-study plan
+Pre-study plan
+G(BB) + W(BB)
+G(BB) + W(BB)
+mixed mode G + L
+G(DU)  + L-FDD(DU)
+Pre-study plan
+G(DU)  + L-FDD(DU)
+G(DU)  + L-FDD(BB)
+Pre-study plan
+G(DU)  + L-FDD(BB)
+G(BB)  + L-FDD(DU)
+Pre-study plan
+Pre-study plan
+G(BB)  + L-FDD(DU)
+G(BB)  + L-FDD(DU)
+G(BB)  + L-FDD(BB)
+Pre-study plan
+Pre-study plan
+G(BB)  + L-FDD(BB)
+G(BB)  + L-FDD(BB)
+mixed mode W + L
+W(DU)  + L-FDD(DU)
+Pre-study plan
+W(DU)  + L-FDD(DU)
+W(DU)  + L-FDD(BB)
+Pre-study plan
+Pre-study plan
+Pre-study plan
+W(DU)  + L-FDD(BB)
+W(DU)  + L-FDD(BB)
+W(DU)  + L-FDD(BB)
+W(BB)  + L-FDD(DU) (BB + DU)
+Pre-study plan
+Pre-study plan
+Pre-study plan
+Released RBB for W(BB)  + L-FDD(DU) (BB + DU)
+Released RBB for W(BB)  + L-FDD(DU) (BB + DU)
+Released RBB for W(BB)  + L-FDD(DU) (BB + DU)
+W(BB)  + L-FDD(BB) (BB + BB)
+Pre-study plan
+Pre-study plan
+Pre-study plan
+Released RBB for W(BB)  + L-FDD(BB) (BB + BB)
+Released RBB for W(BB)  + L-FDD(BB) (BB + BB)
+mixed mode L + C - same CPRI
+L-FDD(DU) + CDMA via same LTE G1) (DU)
+Pre-study plan
+released RBB for L-FDD(DU) + CDMA via same LTE G1) (DU)
+mixed mode L + C - separate CPRI
+L-FDD(BB) + CDMA via LTE G1) (BB + DU)
+Pre-study plan
+Pre-study plan
+Released RBB for L-FDD(BB) + CDMA via LTE G1) (BB + DU)
+Released RBB for L-FDD(BB) + CDMA via LTE G1) (BB + DU)
+L+L FDD
+L-FDD(DU) + L-FDD(DU) (DU + DU)
+Pre-study plan
+Released RBB for L-FDD(DU) + L-FDD(DU) (DU + DU)
+L-FDD(DU) + L-FDD(BB) (DU + BB)
+Pre-study plan
+Pre-study plan
+Released RBB for L-FDD(DU) + L-FDD(BB) (DU + BB)
+Released RBB for L-FDD(DU) + L-FDD(BB) (DU + BB)
+L-FDD(BB) + L-FDD(BB) (BB + BB)
+Pre-study plan
+Pre-study plan
+Released RBB for L-FDD(BB) + L-FDD(BB) (BB + BB)
+Released RBB for L-FDD(BB) + L-FDD(BB) (BB + BB)
+L+L TDD
+L-TDD(DU) + L-TDD(DU) (DU + DU)
+Pre-study plan
+Released RBB  for 'L-TDD(DU) + L-TDD(DU) (DU + DU)
+L-TDD(DU) + L-TDD(BB) (DU + BB)
+Pre-study plan
+Released RBB  for 'L-TDD(DU) + L-TDD(BB) (DU + BB)
+L-TDD(BB) + L-TDD(BB) (BB + BB)
+Pre-study plan
+Released RBB  for 'L-TDD(BB) + L-TDD(BB) (BB + BB)
+G+G
+G(DU) + G(DU)
+Pre-study plan
+Released RBB for G(DU) + G(DU) (DU + DU)
+W+W
+W(DU) + W(BB)
+Pre-study plan
+Pre-study plan
+Released RBB for W(DU) + W(BB) (DU + BB)
+Released RBB for W(DU) + W(BB) (DU + BB)
+W(BB) + W(BB)
+Pre-study plan
+Pre-study plan
+Released RBB for W(BB) + W(BB) (BB + BB)
+Released RBB for W(BB) + W(BB) (BB + BB)
+mixed mode radio supported from one mixed mode Baseband
+G+ W mixed mode BB
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+G+L mixed mode BB
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+W+L mixed mode BB
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+Triple-mixed mode radio
+G+W+L triple-mixed mode BB
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+dual-mixed mode + single mode basebands
+G+W mixed-mode BB + LTE (DU)
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+G+W mixed-mode BB + LTE (BB)
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+G+L mixed-mode BB + W(DU)
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+G+L mixed-mode BB + W(BB)
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+W + L mixed-mode BB + G(DU)
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+W +L mixed-mode BB + G(BB)
+Pre-study plan
+Pre-study plan
+Released RBBs
+Released RBBs
+G+W+W with two W(nodes
+G +W mixed-mode BB + W(DU)
+Pre-study plan
+Released RBBs
+G +W mixed-mode BB + W(BB)
+Pre-study plan
+Released RBBs
+G+L+L with MORAN
+G +L mixed-mode BB (BB)) + LTE (DU))
+Pre-study plan
+Released RBBs
+G +L mixed-mode BB (BB)) + LTE (BB))
+Pre-study plan
+Released RBBs
+W+W+L with two W(nodes
+W((DU)) +  W+L mixed-mode BB (BB))
+Pre-study plan
+Released RBBs
+W((BB)) +  W+L mixed-mode BB (BB))
+Pre-study plan
+Released RBBs
+W+L+L with MORAN
+W +L mixed-mode BB (BB)) + LTE (DU))
+Pre-study plan
+Released RBBs
+W +L mixed-mode BB (BB)) + LTE (BB))
+Pre-study plan
+Released RBBs
+----------------------
+RBB22_1B + RBB24_1B
+RBB11_1A + RBB32_3B
+RBB22_2A
+RBB12_2A
+RBB22_1A + RBB11_1A
+RBB22_2D
+RBB88_2A
+RBB12_1A + RBB14_2A
+RBB42_2E
+RBB22_1C
+RBB12_1A or RBB12_1A + RBB12_1A for PSI
+RBB24_2B or RBB24_2B + RBB24_2B
+RBB22_1B or RBB22_1B + RBB22_1B  for Y
+RBB44_1B
+RBB11_1A for AIR 11
+RBB22_1F + RBB22_1G + RBB44_1F
+RBB12_1A + RBB24_1A for AIR 21
+RBB44_1D
+RBB24_1A + RBB12_1A for AIR 21
+RBB44_1E + RBB22_1H + RBB22_1J
+RBB44_2F
+RBB12_2B + RBB12_2C
+RBB11_1A + RBB43_4A
+RBB11_1A
+RBB24_1B + RBB22_1B
+RBB22_1B
+RBB14_2A + RBB12_1A
+RBB44_2G + RBB44_2H
+RBB43_1A (new)
+RBB22_2B + RBB43_2B
+RBB43_4A + RBB22_2B
+G:RBB43_4A + G:RBB11_1A
+RBB12_1A
+RBB20_1B
+RBB12_1C + RBB12_1D
+RBB44_2C + RBB22_1B
+RBB32_3B + RBB22_2B
+RBB11_1A + RBB32_1B
+RBB43_1A + RBB11_1A
+RBB22_2J
+RBB44_1E + RBB44_1F
+RBB32_1A
+RBB22_1C for AIR 11
+RBB22_1B + RBB24_2B
+RBB11_1A + RBB32_1A
+RBB22_2B + RBB32_3B
+RBB22_2B + RBB43_4A
+RBB32_3A + RBB22_2B
+RBB11_1A + RBB22_1A for AIR 11
+RBB24_2D
+RBB12_1A + RBB24_1A
+RBB22_2B for AIR 11
+RBB22_2A for AIR 11/21
+RBB24_1A  (DMMA)  for AIR 21
+RBB22_1A or RBB22_1A + RBB22_1A
+RBB44_2C or RBB44_2C + RBB44_2C
+RBB22_1B + RBB44_2C
+RBB44_1B + RBB22_1B
+RBB11_1C
+RBB11_2A + RBB11_2B
+RBB24_2A + RBB12_1A
+RBB22_1A + RBB11_1A for AIR 11
+RBB12_1A for Y
+RBB14_2A
+RBB32_3B
+RBB22_1C + RBB24_1A (DMMA) for AIR 21
+RBB12_1A + RBB22_1C
+RBB24_1B
+RBB43_2B + RBB22_2B
+RBB11_1A + RBB22_2B
+RBB22_2K + RBB22_2L + RBB22_2M + RBB22_2N
+RBB24_1A + RBB12_1A
+RBB42_2D or RBB42_2D + RBB42_2D
+RBB12_1A + RBB24_2A
+RBB11_1C + RBB11_1D
+RBB14_1A
+RBB22_1B + RBB44_1B
+RBB11_1A + RBB32_3A
+RBB12_1A + RBB22_1C for AIR 21
+RBB11_1A +RBB43_1A
+RBB10_1A
+RBB32_3A
+RBB32_1B (new)
+RBB20_1A
+RBB22_1B or RBB22_1B + RBB22_1B for RDS
+RBB22_2A or RBB22_2A + RBB22_2A for Y/PSI
+RBB22_1F + RBB22_1G
+RBB12_1A + RBB14_1A
+RBB24_1C
+RBB22_1C for Y/PSI
+RBB22_2E
+RBB10_1A + RBB20_2A
+RBB22_2B or RBB22_2B + RBB22_2B
+RBB24_2B + RBB22_1B
+RBB43_4A
+RBB22_2C for Y/PSI
+RBB22_2B + RBB11_1A
+RBB32_3A + RBB11_1A
+RBB42_1B
+RBB11_1A + RBB22_1A
+RBB24_2A
+RBB14_1A + RBB12_1A
+RBB22_1C for AIR 21
+RBB20_2A + RBB10_1A
+RBB22_1B or RBB22_1B + RBB22_1B  for PSI
+RBB24_1A
+RBB32_3B + RBB11_1A
+RBB22_1F + RBB22_1G + RBB22_1H
+RBB22_2K + RBB22_2L + RBB44_2H
+RBB24_1A + RBB22_1C  (DMMA) for AIR 21
+RBB22_2C
+RBB20_2A
+RBB88_1A
+RBB22_1C + RBB12_1A
+RBB22_1A  for AIR 11
+RBB22_1C + RBB12_1A for AIR 21
+RBB44_2G + RBB22_2M + RBB22_2N
+RBB32_1A + RBB11_1A
+RBB12_1A for AIR 21
+RBB22_2B + RBB32_3A
+RBB22_1F + RBB22_1G + RBB22_1H + RBB22_1J
+RBB22_2K + RBB22_2L + RBB22_2M
+RBB32_1B + RBB11_1A
+RBB22_2K + RBB22_2L

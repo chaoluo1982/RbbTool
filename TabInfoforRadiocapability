@@ -1,0 +1,18 @@
+{'KRC': 'KRC 161 264/1', 'G+W+L': '', 
+'6501W': '', 'RuGroup': '3', 'G+G': '', 
+'DUWV2113141': '15A', 
+'5216W': '16A', 'RUType': 'RRUS02', 'NumOfTx': '1', 
+'5212L': '16A', 'W': 'X', '
+DUWV1102030': '15A', 'AnalogueCrossConnect': 'X', 'G+W': 'X', 'C+L': '', 'Band': '0',
+ 'DUG20': '14B', 'W+L': '', 'DBA': '', 
+'5212G': '16B', 
+'DUS41': '14B',
+ '5216L': '16A', 'C': '', 
+ 'IDUW': '', 
+ 'LTETDD': '', 
+ 'IDUL': '', 
+ 'DUS31': '14B', 
+ 'DUL20': '14B', 'G': 'X', 'L+L': 'X', 
+'5216G': '16B', 
+'5212W': '16A', 'OutputPower': '100', 
+'6501L': '15B', 'L': 'X', 'G+L': 'X', 'NumOfRx': '2'}
