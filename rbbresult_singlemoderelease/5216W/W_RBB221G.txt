@@ -4,5 +4,5 @@ RU1: (RuType:RRUS32),  W16B?
 
 WithBandInfo:
 RU1: (RuType:RRUS32, Band:2, KRC:KRC 161 414/1),  W16B?
-RU1: (RuType:RRUS32, Band:4, KRC:KRC 161 416/1),  W16B?
 RU1: (RuType:RRUS32, Band:66A, KRC:KRC 161 583/1),  W16B?
+RU1: (RuType:RRUS32, Band:4, KRC:KRC 161 416/1),  W16B?

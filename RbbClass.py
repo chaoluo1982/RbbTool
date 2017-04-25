@@ -474,22 +474,33 @@ class RBBSNSMRWith4RUCascadeAndCC(RBBSNSMRWith4RUCC):
 #mixed mode case, multi node single baseband, mixed mode radio, one RU is shared
 #here assumption is that we use mixed mode release
 #RBBRuList should be aggregation of two single mode cases, and remove some item accoording to rule
-class RBBMM1RUShared(RBB):
+class RBBMNSBMMR(RBB):
     
-    def __init__(self, rbbName, duType, ran, ranmmrelease, RBBRuList, sharedRuNumber, peerrbbName, peerduType, peerran, peerranmmrelease, peerRBBRuList, peersharedRuNumber):
+    def __init__(self, rbbName, duType, ran, ranmmrelease, RBBRuList, sharedRuNumberList, peerrbbName, peerduType, peerran, peerranmmrelease, peerRBBRuList, peersharedRuNumberList):
         self.rbbName = rbbName 
         self.duType = duType
         self.ran = ran
         self.ranmmrelease = ranmmrelease
         self.RBBRuList = RBBRuList
-        self.sharedRuNumber = sharedRuNumber
+        self.sharedRuNumberList = sharedRuNumberList
         self.peerrbbName = peerrbbName 
         self.peerduType = peerduType
         self.peerran = peerran
         self.peerranmmrelease = peerranmmrelease
         self.peerRBBRuList = peerRBBRuList
-        self.peersharedRuNumber = peersharedRuNumber
-        self.rbbName +=  "_RU" + str(self.sharedRuNumber) +"MixedModeWith_" + self.peerduType + "_" + self.peerran + "_" + self.peerrbbName
+        self.peersharedRuNumberList = peersharedRuNumberList
+        
+        if len(sharedRuNumberList) != len(peersharedRuNumberList):
+            raise Exception("this is an error for shared RU number list!")
+        self.rbbName += "_"
+        for sharedRuNumber in self.sharedRuNumberList:
+            self.rbbName += "RU" + str(sharedRuNumber)
+        self.rbbName += "_MixedModeWith_"
+        for sharedRuNumber in self.peersharedRuNumberList:
+            self.rbbName += "RU" + str(sharedRuNumber)
+        self.rbbName += "_In_" + self.peerduType + "_" + self.peerran + "_" + self.peerrbbName
+
+        
         
     def generateRBBRuList(self):
         
@@ -504,14 +515,26 @@ class RBBMM1RUShared(RBB):
         
         #shared RU should support RAN combination and supported by peer(DU,RAN)
         for RBBRuListItem in self.RBBRuList:
-            if (hasRanSupport(RBBRuListItem[self.sharedRuNumber - 1][ranCombination])):
+            isValidRBBRuListItem = 0
+            for (i, sharedRuNumber) in enumerate(self.sharedRuNumberList):
+                if (not hasRanSupport(RBBRuListItem[sharedRuNumber - 1][ranCombination])):
+                    #get out this for loop for self.sharedRuNumberList because RAN combination does not support it
+                    break
+                
                 for peerRBBRuListItem in self.peerRBBRuList:
-                    if (RBBRuListItem[self.sharedRuNumber - 1] == peerRBBRuListItem[self.peersharedRuNumber - 1]):
-
-                        if release > RBBRuListItem[-1]:
-                            RBBRuListItem[-1] = release
-
-                        newRBBRuList.append(RBBRuListItem)
+                    #for shared RU number list like (2,3) will be compared with peer (1,2), and RU2 will be mapping to peer RBB RU1 just as the list sequence
+                    if (RBBRuListItem[sharedRuNumber - 1] == peerRBBRuListItem[self.peersharedRuNumberList[i] - 1]):
+                        #break out from this inner loop for peer RBB RU, and continue outer for loop
                         break
+                else:
+                    #get out this for loop for self.sharedRuNumberList because RU is not supported by peer RBB
+                    break
+            else:
+                #go through all self.sharedRuNumberList checking, all conditions are OK
+                if release > RBBRuListItem[-1]:
+                    RBBRuListItem[-1] = release
+                newRBBRuList.append(RBBRuListItem)
+
+                
         self.RBBRuList = newRBBRuList        
             

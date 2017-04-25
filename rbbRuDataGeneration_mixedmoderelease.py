@@ -20,8 +20,6 @@ with open(fileName, "w") as rbbInfofile:
 """
 
 
-
- 
                
 ######################################## Function ###################################################################
 
@@ -61,10 +59,10 @@ def generateAllSingleModeRBBRuList():
                         rbbClassInstance.print(printDirectory)
 
 #generate RBBMM1RUSharedRBBRuList based on RBB MM release info                        
-def generateRBBMM1RUSharedRBBRuList():
+def generateRBBMNSBMMRRBBRuList():
     printDirectory = ".\\rbbresult_mixedmoderelease"
 
-    for MNSBMMRListItem in MNSBMMR1RUSharedList:
+    for MNSBMMRListItem in MNSBMMRRbbInfoList:
         #step 1: generate single mode RBBRUList
         for (i, RBBInfo) in enumerate(MNSBMMRListItem):
             rbb = RBBInfo[0]
@@ -104,14 +102,14 @@ def generateRBBMM1RUSharedRBBRuList():
                         MNSBMMRListItem[i].append(rbbClassInstance.RBBRuList)
                         break
 
-        #step2: generate mixed mode RBBRUList (MNSBMMR 1RU shared)
+        #step2: generate mixed mode RBBRUList (MNSBMMR 1RU shared) for both RBB involved inthis mixed mode case
         for i in range(2):
 
             rbbName = MNSBMMRListItem[i][0]
             duType = MNSBMMRListItem[i][1]
             ran = MNSBMMRListItem[i][2]
             ranmmrelease = MNSBMMRListItem[i][3]
-            sharedRuNumber = MNSBMMRListItem[i][4]
+            sharedRuNumberList = MNSBMMRListItem[i][4]
             RBBRuList = MNSBMMRListItem[i][5]
 
             peerindex = (i+1) % 2
@@ -119,11 +117,12 @@ def generateRBBMM1RUSharedRBBRuList():
             peerduType = MNSBMMRListItem[peerindex][1]
             peerran = MNSBMMRListItem[peerindex][2]
             peerranmmrelease = MNSBMMRListItem[peerindex][3]
-            peersharedRuNumber = MNSBMMRListItem[peerindex][4]
+            peersharedRuNumberList = MNSBMMRListItem[peerindex][4]
             peerRBBRuList = MNSBMMRListItem[peerindex][5]
 
 
-            mmrbbClassIntance = RBBMM1RUShared(rbbName, duType, ran, ranmmrelease, RBBRuList, sharedRuNumber, peerrbbName, peerduType, peerran, peerranmmrelease, peerRBBRuList, peersharedRuNumber)
+
+            mmrbbClassIntance = RBBMNSBMMR(rbbName, duType, ran, ranmmrelease, RBBRuList, sharedRuNumberList, peerrbbName, peerduType, peerran, peerranmmrelease, peerRBBRuList, peersharedRuNumberList)
             mmrbbClassIntance.generateRBBRuList()
             mmrbbClassIntance.print(printDirectory)
 
@@ -132,4 +131,4 @@ def generateRBBMM1RUSharedRBBRuList():
 
 #generateAllSingleModeRBBRuList()
 
-generateRBBMM1RUSharedRBBRuList()
+generateRBBMNSBMMRRBBRuList()

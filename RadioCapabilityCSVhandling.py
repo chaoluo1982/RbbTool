@@ -33,7 +33,7 @@ def parseAllRUInfo(fileName):
         #remove whitespace and return line the tabinfo string list
         for (i,s) in enumerate(tabInfo):
             tabInfo[i] = s.replace("\n", "").replace(" ", "").strip()
-        print (tabInfo)
+        #print (tabInfo)
         
         #from line 8, we have the RU data info, so here we jump line 6 and line 7
         for i in range(2):
