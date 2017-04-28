@@ -81,26 +81,26 @@ def generateRBBMNSBMMRRBBRuList():
                     className = RBB4RUMap[rbb][1]
                     ruTypeList = RBB4RUMap[rbb][0]
 
-                for suppportedRbb in duTypeRbbMap[duType]:
-                    #include RAN release info later    (if rbb have release info, like 15A, compare it with RuType release info) 
-                    if (rbb == suppportedRbb[0]):
-                        rbbrelease = suppportedRbb[1]
-                        rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ran, ruTypeList, RuDataList)
-                        rbbClassInstance.generateRBBRuList()
-                        MNSBMMRListItem[i].append(rbbClassInstance.RBBRuList)
-                        break
+                    #here we do not care whether the RBB is released or not in the SNSMR case
+
+                    
+
+                rbbrelease = ""
+                rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ran, ruTypeList, RuDataList)
+                rbbClassInstance.generateRBBRuList()
+                MNSBMMRListItem[i].append(rbbClassInstance.RBBRuList)
+
             if rbb in RBB2RUMap.keys():
                 className = RBB2RUMap[rbb][2]
                 ru1TypeList = RBB2RUMap[rbb][0]
                 ru2TypeList = RBB2RUMap[rbb][1]
-                for suppportedRbb in duTypeRbbMap[duType]:
-                    #include RAN release info later    (if rbb have release info, like 15A, compare it with RuType release info) 
-                    if (rbb == suppportedRbb[0]):
-                        rbbrelease = suppportedRbb[1]
-                        rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ran, ru1TypeList, ru2TypeList, RuDataList)
-                        rbbClassInstance.generateRBBRuList()
-                        MNSBMMRListItem[i].append(rbbClassInstance.RBBRuList)
-                        break
+                #here we do not care whether the RBB is released or not in the SNSMR case
+
+                rbbrelease = ""
+                rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ran, ru1TypeList, ru2TypeList, RuDataList)
+                rbbClassInstance.generateRBBRuList()
+                MNSBMMRListItem[i].append(rbbClassInstance.RBBRuList)
+
 
         #step2: generate mixed mode RBBRUList (MNSBMMR 1RU shared) for both RBB involved inthis mixed mode case
         for i in range(2):
@@ -126,9 +126,70 @@ def generateRBBMNSBMMRRBBRuList():
             mmrbbClassIntance.generateRBBRuList()
             mmrbbClassIntance.print(printDirectory)
 
+#generate RBBSNMBMMRRBBRuList based on RBB MM release info                        
+def generateRBBSNMBMMRRBBRuList():
+    printDirectory = ".\\rbbresult_snmbmixedmoderelease"
+
+    for RBBInfo in SNMBMMRRbbInfoList:
+        #make sure all input is capital case
+        rbb = RBBInfo[0].upper()
+        duTypeInfo = RBBInfo[1]
+        ran = RBBInfo[2]
+        peerran = RBBInfo[3]
+        mmrelease = RBBInfo[4]
+        ranList = [ran, peerran]
+        
+        for ranItem in ranList:
+            RBBRuList = []
+            duType = duTypeInfo + ranItem
+
+        #step 1: generate single mode RBBRUList
+
+
+            
+            if rbb in RBB1RUMap.keys() or rbb in RBB3RUMap.keys() or rbb in RBB4RUMap.keys():
+                if rbb in RBB1RUMap.keys():
+                    className = RBB1RUMap[rbb][1]
+                    ruTypeList = RBB1RUMap[rbb][0]
+                if rbb in RBB3RUMap.keys():
+                    className = RBB3RUMap[rbb][1]
+                    ruTypeList = RBB3RUMap[rbb][0]
+                if rbb in RBB4RUMap.keys():
+                    className = RBB4RUMap[rbb][1]
+                    ruTypeList = RBB4RUMap[rbb][0]
+
+
+                #here we do not care whether the RBB is released or not in the SNSMR case
+                rbbrelease = ""
+                rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ranItem, ruTypeList, RuDataList)
+                rbbClassInstance.generateRBBRuList()
+                RBBRuList = rbbClassInstance.RBBRuList
+                    
+            if rbb in RBB2RUMap.keys():
+                className = RBB2RUMap[rbb][2]
+                ru1TypeList = RBB2RUMap[rbb][0]
+                ru2TypeList = RBB2RUMap[rbb][1]
+
+                #here we do not care whether the RBB is released or not in the SNSMR case
+                rbbrelease = ""
+                rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ranItem, ru1TypeList, ru2TypeList, RuDataList)
+                rbbClassInstance.generateRBBRuList()
+                RBBRuList = rbbClassInstance.RBBRuList
+                
+            RBBInfo.append(RBBRuList)
+
+        #step2: generate mixed mode RBBRUList (MNSBMMR 1RU shared) for both RBB involved inthis mixed mode case
+
+        RBBRuList = RBBInfo[-2]
+        peerRBBRuList = RBBInfo[-1]
+        mmrbbClassIntance = RBBSNMBMMR(rbb, duTypeInfo, ran, mmrelease, RBBRuList,  peerran, peerRBBRuList)
+        mmrbbClassIntance.generateRBBRuList()
+        mmrbbClassIntance.print(printDirectory)
                 
 ######################################## main program try to call function to generate result ###################################################################
 
 #generateAllSingleModeRBBRuList()
 
 generateRBBMNSBMMRRBBRuList()
+
+generateRBBSNMBMMRRBBRuList()

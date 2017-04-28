@@ -1,0 +1,9 @@
+WithoutBandInfo:
+RU1: (RuType:RRUS12), RU2: (RuType:Radio0208),  17A
+RU1: (RuType:Radio2212), RU2: (RuType:Radio0208),  17A?
+
+
+WithBandInfo:
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:Radio0208, Band:5, KRC:KRC 161 588/1),  17A?
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:Radio0208, Band:5, KRC:KRC 161 588/1),  17A
+RU1: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2), RU2: (RuType:Radio0208, Band:2, KRC:KRC 161 589/1),  17A

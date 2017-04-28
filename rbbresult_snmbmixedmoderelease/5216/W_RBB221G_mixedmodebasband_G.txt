@@ -1,0 +1,6 @@
+WithoutBandInfo:
+RU1: (RuType:RRUS32),  17A
+
+
+WithBandInfo:
+RU1: (RuType:RRUS32, Band:2, KRC:KRC 161 414/1),  17A

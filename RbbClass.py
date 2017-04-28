@@ -537,4 +537,48 @@ class RBBMNSBMMR(RBB):
 
                 
         self.RBBRuList = newRBBRuList        
+
+######################################################################################################################################
+#RBBSNMBMMR
+class RBBSNMBMMR(RBB):
+    
+    def __init__(self, rbbName, duType, ran, mmrelease, RBBRuList, peerran, peerRBBRuList):
+        self.rbbName = rbbName 
+        self.duType = duType
+        self.ran = ran
+        self.mmrelease = mmrelease
+        self.RBBRuList = RBBRuList
+        self.peerran = peerran
+        self.peerRBBRuList = peerRBBRuList
+        self.RBBRuList += self.peerRBBRuList 
+
+
+        self.rbbName += "_mixedmodebasband_" + self.peerran 
+
+        
+        
+    def generateRBBRuList(self):
+        
+        RBBRuListItem = []
+        peerRBBRuListItem = []
+        newRBBRuList = []
+
+
+        ranCombination = getRanCombination(self.ran, self.peerran, self.RBBRuList[0][0])
+                
+        
+        #shared RU should support RAN combination and supported by peer(DU,RAN)
+        for RBBRuListItem in self.RBBRuList:
+            #here we only check whether any of the item support RAN combination
+            for ru in RBBRuListItem[0:-1]:
+                if hasRanSupport(ru[ranCombination]):
+                    mmrelease = RBBRuListItem[-1][1:]
+                    if self.mmrelease > mmrelease:
+                        RBBRuListItem[-1] = self.mmrelease
+                    else:
+                        RBBRuListItem[-1] = mmrelease
+                    newRBBRuList.append(RBBRuListItem)
+                    break
+                
+        self.RBBRuList = newRBBRuList        
             
