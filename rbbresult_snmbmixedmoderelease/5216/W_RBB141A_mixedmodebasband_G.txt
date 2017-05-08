@@ -3,7 +3,7 @@ RU1: (RuType:RRUS01), RU2: (RuType:Radio0208),  17A
 
 
 WithBandInfo:
-RU1: (RuType:RRUS01, Band:5, KRC:KRC 118 70/2), RU2: (RuType:Radio0208, Band:5, KRC:KRC 161 588/1),  17A
 RU1: (RuType:RRUS01, Band:5, KRC:KRC 118 70/3), RU2: (RuType:Radio0208, Band:5, KRC:KRC 161 588/1),  17A
-RU1: (RuType:RRUS01, Band:2, KRC:KRC 118 74/1), RU2: (RuType:Radio0208, Band:2, KRC:KRC 161 589/1),  17A
+RU1: (RuType:RRUS01, Band:5, KRC:KRC 118 70/2), RU2: (RuType:Radio0208, Band:5, KRC:KRC 161 588/1),  17A
 RU1: (RuType:RRUS01, Band:2, KRC:KRC 118 74/2), RU2: (RuType:Radio0208, Band:2, KRC:KRC 161 589/1),  17A
+RU1: (RuType:RRUS01, Band:2, KRC:KRC 118 74/1), RU2: (RuType:Radio0208, Band:2, KRC:KRC 161 589/1),  17A

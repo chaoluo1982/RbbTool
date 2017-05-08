@@ -76,8 +76,25 @@ class RBB:
                 rbbInfofile.write("%s %s\n" % (ruInfo, releaseinfo))
 
 #####################################################################################################################################                
+class RBBSNSMR(RBB):
+    def generateRBBRuList(self):
+        
+        self.generateRBBRuListWithoutRanCheck()
+        RBBRuListItem = []
+        newRBBRuList = []
+
+        for RBBRuListItem in self.RBBRuList:
+            for ru in RBBRuListItem[0:-1]:
+                if (not hasRanSupport(ru[self.ran])):
+                    break
+            else:
+                newRBBRuList.append(RBBRuListItem)                            
+                
+        self.RBBRuList = newRBBRuList
+
+    
 #Typical RBB with 1RU
-class RBBSNSMRWith1RU(RBB):
+class RBBSNSMRWith1RU(RBBSNSMR):
     validRuTypeList = []
 
 
@@ -90,7 +107,7 @@ class RBBSNSMRWith1RU(RBB):
         self.ran = ran
         self.RBBRuList = []
     
-    def generateRBBRuList(self):
+    def generateRBBRuListWithoutRanCheck(self):
         RBBRuListItem = []
         validRuList = []
         
@@ -102,7 +119,7 @@ class RBBSNSMRWith1RU(RBB):
           
         for ru in validRuList:
             #Rule: all radios should support RAN
-            if (hasRanSupport(ru[self.ran])):
+            #if (hasRanSupport(ru[self.ran])):
                 #Rule support the DuType
                 if (isDuTypeSupport(ru[self.duType])):
                     
@@ -116,7 +133,7 @@ class RBBSNSMRWith1RU(RBB):
 #####################################################################################################################################                
 #Typical RBB with 2RU 
 
-class RBBSNSMR2RU(RBB):
+class RBBSNSMR2RU(RBBSNSMR):
     validRuTypeList1 = []
     validRuTypeList2 = []
 
@@ -132,7 +149,7 @@ class RBBSNSMR2RU(RBB):
         self.ran = ran
         self.RBBRuList = []
     
-    def generateRBBRuList(self):
+    def generateRBBRuListWithoutRanCheck(self):
         RBBRuListItem = []
         validRuList1 = []
         validRuList2 = []
@@ -153,7 +170,7 @@ class RBBSNSMR2RU(RBB):
         for ru1 in validRuList1:
             for ru2 in validRuList2:
                 #Rule: all radios should support RAN
-                if (hasRanSupport(ru1[self.ran]) and hasRanSupport(ru2[self.ran])):
+                #if (hasRanSupport(ru1[self.ran]) and hasRanSupport(ru2[self.ran])):
                             #Rule support the DuType
                             if (isDuTypeSupport(ru1[self.duType]) and isDuTypeSupport(ru2[self.duType]) ):                         
                                     #Rule: all radios should be same remote or mainmacro, no mix
@@ -189,8 +206,8 @@ class RBBSNSMRWith2RURU2RXOnly(RBBSNSMR2RU):
 # RBB44_2C          
 class RBBSNSMRWith2RU(RBBSNSMR2RU):
     
-    def generateRBBRuList(self):
-        RBBSNSMR2RU.generateRBBRuList(self)
+    def generateRBBRuListWithoutRanCheck(self):
+        RBBSNSMR2RU.generateRBBRuListWithoutRanCheck(self)
         RBBRuListItem = []
         newRBBRuList = []
 
@@ -217,8 +234,8 @@ class RBBSNSMRWith2RU(RBBSNSMR2RU):
 class RBBSNSMRWith2RUCascadeAndCC(RBBSNSMR2RU):
  
     
-    def generateRBBRuList(self):
-        RBBSNSMR2RU.generateRBBRuList(self)
+    def generateRBBRuListWithoutRanCheck(self):
+        RBBSNSMR2RU.generateRBBRuListWithoutRanCheck(self)
         RBBRuListItem = []
         newRBBRuList = []
 
@@ -241,8 +258,8 @@ class RBBSNSMRWith2RUCascadeAndCC(RBBSNSMR2RU):
 # RBB24_1A
 # RBB44_1B
 class RBBSNSMRWith2RUCascade(RBBSNSMR2RU):
-    def generateRBBRuList(self):
-        RBBSNSMR2RU.generateRBBRuList(self)
+    def generateRBBRuListWithoutRanCheck(self):
+        RBBSNSMR2RU.generateRBBRuListWithoutRanCheck(self)
         RBBRuListItem = []
         newRBBRuList = []
 
@@ -264,8 +281,8 @@ class RBBSNSMRWith2RUCascade(RBBSNSMR2RU):
 # RBB14_1A
 # RBB24_1B
 class RBBSNSMRWith2RUCascadeRU2RXOnly(RBBSNSMR2RU):
-    def generateRBBRuList(self):
-        RBBSNSMR2RU.generateRBBRuList(self)
+    def generateRBBRuListWithoutRanCheck(self):
+        RBBSNSMR2RU.generateRBBRuListWithoutRanCheck(self)
         RBBRuListItem = []
         newRBBRuList = []
 
@@ -282,8 +299,8 @@ class RBBSNSMRWith2RUCascadeRU2RXOnly(RBBSNSMR2RU):
 # RBB42_2D
 
 class RBBSNSMRWith2RUCC(RBBSNSMR2RU):
-    def generateRBBRuList(self):
-        RBBSNSMR2RU.generateRBBRuList(self)
+    def generateRBBRuListWithoutRanCheck(self):
+        RBBSNSMR2RU.generateRBBRuListWithoutRanCheck(self)
         RBBRuListItem = []
         newRBBRuList = []
 
@@ -305,7 +322,7 @@ class RBBSNSMRWith2RUCC(RBBSNSMR2RU):
 #Typical RBB with 3RU with analogue Cross connect, RUs are not CPRI cascaded.
 #RBB32_3A and RBB32_3B
 #LTE has no support for 3 RU        
-class RBBSNSMRWith3RUCC(RBB):
+class RBBSNSMRWith3RUCC(RBBSNSMR):
     validRuList = []
     validRuTypeList = []
 
@@ -320,7 +337,7 @@ class RBBSNSMRWith3RUCC(RBB):
         self.RBBRuList = []
       
     
-    def generateRBBRuList(self):
+    def generateRBBRuListWithoutRanCheck(self):
         
         RBBRuListItem = []
         validRuList = []
@@ -334,7 +351,7 @@ class RBBSNSMRWith3RUCC(RBB):
             for ru2 in validRuList:
                 for ru3 in validRuList:
                     #Rule: all radios should support W
-                    if (hasRanSupport(ru1[self.ran]) and hasRanSupport(ru2[self.ran]) and hasRanSupport(ru3[self.ran])):
+                    #if (hasRanSupport(ru1[self.ran]) and hasRanSupport(ru2[self.ran]) and hasRanSupport(ru3[self.ran])):
                         #Rule: all radios should have CC support
                         if (isAnalogueCrossConnectSupport(ru1["AnalogueCrossConnect"]) and isAnalogueCrossConnectSupport(ru2["AnalogueCrossConnect"]) and isAnalogueCrossConnectSupport(ru3["AnalogueCrossConnect"])):
                             #Rule support the DuType
@@ -369,8 +386,8 @@ class RBBSNSMRWith3RUCC(RBB):
 #RBB32_1A and RBB32_1B                
 class RBBSNSMRWith3RUCascadeAndCC(RBBSNSMRWith3RUCC):
     
-    def generateRBBRuList(self):
-        RBBSNSMRWith3RUCC.generateRBBRuList(self)
+    def generateRBBRuListWithoutRanCheck(self):
+        RBBSNSMRWith3RUCC.generateRBBRuListWithoutRanCheck(self)
         RBBRuListItem = []
         newRBBRuList = []
 
@@ -387,7 +404,7 @@ class RBBSNSMRWith3RUCascadeAndCC(RBBSNSMRWith3RUCC):
 #Typical RBB with 4RU with analogue Cross connect, RUs are not CPRI cascaded.
 #RBB43_4A
       
-class RBBSNSMRWith4RUCC(RBB):
+class RBBSNSMRWith4RUCC(RBBSNSMR):
     validRuList = []
     validRuTypeList = []
 
@@ -402,7 +419,7 @@ class RBBSNSMRWith4RUCC(RBB):
         self.RBBRuList = []
       
     
-    def generateRBBRuList(self):
+    def generateRBBRuListWithoutRanCheck(self):
         
         RBBRuListItem = []
         validRuList = []
@@ -417,8 +434,8 @@ class RBBSNSMRWith4RUCC(RBB):
                 for ru3 in validRuList:
                     for ru4 in validRuList:
                         #Rule: all radios should support W
-                        if (hasRanSupport(ru1[self.ran]) and hasRanSupport(ru2[self.ran])
-                            and hasRanSupport(ru3[self.ran]) and hasRanSupport(ru4[self.ran])):
+                        #if (hasRanSupport(ru1[self.ran]) and hasRanSupport(ru2[self.ran])
+                        #    and hasRanSupport(ru3[self.ran]) and hasRanSupport(ru4[self.ran])):
                             #Rule: all radios should have CC support
                             if (isAnalogueCrossConnectSupport(ru1["AnalogueCrossConnect"]) and isAnalogueCrossConnectSupport(ru2["AnalogueCrossConnect"])
                                 and isAnalogueCrossConnectSupport(ru3["AnalogueCrossConnect"]) and isAnalogueCrossConnectSupport(ru4["AnalogueCrossConnect"])):
@@ -458,8 +475,8 @@ class RBBSNSMRWith4RUCC(RBB):
 #RBB43_1A                
 class RBBSNSMRWith4RUCascadeAndCC(RBBSNSMRWith4RUCC):
     
-    def generateRBBRuList(self):
-        RBBSNSMRWith4RUCC.generateRBBRuList(self)
+    def generateRBBRuListWithoutRanCheck(self):
+        RBBSNSMRWith4RUCC.generateRBBRuListWithoutRanCheck(self)
         RBBRuListItem = []
         newRBBRuList = []
 
@@ -506,13 +523,25 @@ class RBBMNSBMMR(RBB):
         
         RBBRuListItem = []
         peerRBBRuListItem = []
-        newRBBRuList = []
         release = self.ran + self.ranmmrelease
 
 
         ranCombination = getRanCombination(self.ran, self.peerran, self.RBBRuList[0][0])
                 
+        #non-shared RU must support the RAN
+        newRBBRuList = []
+        for RBBRuListItem in self.RBBRuList:            
+            for (index, ru) in enumerate(RBBRuListItem[0:-1]):
+                ruNumber = index + 1
+                if ruNumber not in self.sharedRuNumberList:                 
+                    if  (not hasRanSupport(ru[self.ran])):
+                        break
+            else:
+                newRBBRuList.append(RBBRuListItem)                
+        self.RBBRuList = newRBBRuList
         
+
+        newRBBRuList = []
         #shared RU should support RAN combination and supported by peer(DU,RAN)
         for RBBRuListItem in self.RBBRuList:
             isValidRBBRuListItem = 0
@@ -561,12 +590,23 @@ class RBBSNMBMMR(RBB):
         
         RBBRuListItem = []
         peerRBBRuListItem = []
-        newRBBRuList = []
+       
 
 
         ranCombination = getRanCombination(self.ran, self.peerran, self.RBBRuList[0][0])
-                
+
+        #ru in the list must support either ran, peerran, or RAN combination
+        newRBBRuList = []
+        for RBBRuListItem in self.RBBRuList:
+            for ru in RBBRuListItem[0:-1]:
+                if  (not hasRanSupport(ru[self.ran])) and (not hasRanSupport(ru[self.peerran])) and (not hasRanSupport(ru[ranCombination])):
+                    break
+            else:
+                newRBBRuList.append(RBBRuListItem)                
+        self.RBBRuList = newRBBRuList
         
+
+        newRBBRuList = []
         #shared RU should support RAN combination and supported by peer(DU,RAN)
         for RBBRuListItem in self.RBBRuList:
             #here we only check whether any of the item support RAN combination

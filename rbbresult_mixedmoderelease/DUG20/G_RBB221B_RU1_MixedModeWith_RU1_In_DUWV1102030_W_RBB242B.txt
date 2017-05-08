@@ -1,7 +1,9 @@
 WithoutBandInfo:
+RU1: (RuType:Radio2212),  G?
 RU1: (RuType:RRUS12),  G14B
 
 
 WithBandInfo:
-RU1: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2),  G14B
 RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2),  G14B
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1),  G?
+RU1: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2),  G14B

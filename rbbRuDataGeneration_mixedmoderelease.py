@@ -87,7 +87,7 @@ def generateRBBMNSBMMRRBBRuList():
 
                 rbbrelease = ""
                 rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ran, ruTypeList, RuDataList)
-                rbbClassInstance.generateRBBRuList()
+                rbbClassInstance.generateRBBRuListWithoutRanCheck()
                 MNSBMMRListItem[i].append(rbbClassInstance.RBBRuList)
 
             if rbb in RBB2RUMap.keys():
@@ -98,7 +98,7 @@ def generateRBBMNSBMMRRBBRuList():
 
                 rbbrelease = ""
                 rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ran, ru1TypeList, ru2TypeList, RuDataList)
-                rbbClassInstance.generateRBBRuList()
+                rbbClassInstance.generateRBBRuListWithoutRanCheck()
                 MNSBMMRListItem[i].append(rbbClassInstance.RBBRuList)
 
 
@@ -162,7 +162,7 @@ def generateRBBSNMBMMRRBBRuList():
                 #here we do not care whether the RBB is released or not in the SNSMR case
                 rbbrelease = ""
                 rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ranItem, ruTypeList, RuDataList)
-                rbbClassInstance.generateRBBRuList()
+                rbbClassInstance.generateRBBRuListWithoutRanCheck()
                 RBBRuList = rbbClassInstance.RBBRuList
                     
             if rbb in RBB2RUMap.keys():
@@ -173,7 +173,7 @@ def generateRBBSNMBMMRRBBRuList():
                 #here we do not care whether the RBB is released or not in the SNSMR case
                 rbbrelease = ""
                 rbbClassInstance = getattr(thisModule, className)(rbb, rbbrelease, duType, ranItem, ru1TypeList, ru2TypeList, RuDataList)
-                rbbClassInstance.generateRBBRuList()
+                rbbClassInstance.generateRBBRuListWithoutRanCheck()
                 RBBRuList = rbbClassInstance.RBBRuList
                 
             RBBInfo.append(RBBRuList)
@@ -188,8 +188,8 @@ def generateRBBSNMBMMRRBBRuList():
                 
 ######################################## main program try to call function to generate result ###################################################################
 
-#generateAllSingleModeRBBRuList()
+generateAllSingleModeRBBRuList()
 
-generateRBBMNSBMMRRBBRuList()
+#generateRBBMNSBMMRRBBRuList()
 
-generateRBBSNMBMMRRBBRuList()
+#generateRBBSNMBMMRRBBRuList()
