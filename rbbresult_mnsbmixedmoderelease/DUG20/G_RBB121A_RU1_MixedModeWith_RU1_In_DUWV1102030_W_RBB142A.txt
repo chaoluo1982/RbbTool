@@ -1,0 +1,7 @@
+WithoutBandInfo:
+RU1: (RuType:RRUS01),  G14B
+
+
+WithBandInfo:
+RU1: (RuType:RRUS01, Band:2, KRC:KRC 118 74/1),  G14B
+RU1: (RuType:RRUS01, Band:2, KRC:KRC 118 74/2),  G14B

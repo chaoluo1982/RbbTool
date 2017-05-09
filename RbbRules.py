@@ -19,7 +19,7 @@ def getReleaseInfo(RBBRuListItem, duType, ran, rbbrelease):
         else:
             if release < ruRelease:
                 release = ruRelease
-
+    #in case table info is wrong, that RU is not released for this (DUType, RAN), in cases like AIR32 which only exist in mixed mode cases?
     if (not release):
         release = rbbrelease
     else:
@@ -35,15 +35,43 @@ def getReleaseInfo(RBBRuListItem, duType, ran, rbbrelease):
       
     
 def getRanCombination(ran1, ran2, ruExample):
-    ranCombination1 = ran1 + "+" + ran2
-    ranCombination2 = ran2 + "+" + ran1
-    if ranCombination1 in ruExample.keys():
-        ranCombination = ranCombination1
-    elif ranCombination2 in ruExample.keys():
-        ranCombination = ranCombination2
-    else:
-        raise Exception("this is an error!")
-    return ranCombination
+    if ("+" not in ran1) and ("+" not in ran2):
+        ranCombination1 = ran1 + "+" + ran2
+        ranCombination2 = ran2 + "+" + ran1
+        if ranCombination1 in ruExample.keys():
+            ranCombination = ranCombination1
+            return ranCombination
+        elif ranCombination2 in ruExample.keys():
+            ranCombination = ranCombination2
+            return ranCombination
+        else:
+            raise Exception("this is an error!")
+        
+    if ("+" in ran1) and ("+" not in ran2):
+        [ranStandard1, ranStandard2] = ran1.split("+")
+        ranStandard3 = ran2
+        for rans1 in [ranStandard1, ranStandard2, ranStandard3]:
+            for rans2 in [ranStandard1, ranStandard2, ranStandard3]:
+                for rans3 in [ranStandard1, ranStandard2, ranStandard3]:
+                    if (rans1 != rans2) and (rans2 != rans3) and (rans1 != rans3):
+                        ranCombination = rans1 + "+" + rans2 + "+" + rans3
+                        if ranCombination in ruExample.keys():
+                            return ranCombination                        
+    if ("+" in ran2) and ("+" not in ran1):
+        [ranStandard1, ranStandard2] = ran2.split("+")
+        ranStandard3 = ran1
+        for rans1 in [ranStandard1, ranStandard2, ranStandard3]:
+            for rans2 in [ranStandard1, ranStandard2, ranStandard3]:
+                for rans3 in [ranStandard1, ranStandard2, ranStandard3]:
+                    if (rans1 != rans2) and (rans2 != rans3) and (rans1 != rans3):
+                        ranCombination = rans1 + "+" + rans2 + "+" + rans3
+                        if ranCombination in ruExample.keys():
+                            return ranCombination   
+
+
+    raise Exception("this is an error!")
+    
+    
     
 
             

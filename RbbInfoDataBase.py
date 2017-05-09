@@ -459,7 +459,7 @@ RBBInfo1 = ["RBB221C", "DUWV1102030", "W","15A", (2,)]
 RBBInfo2 = ["RBB121A", "DUG20", "G","14B", (1,)]
 MNSBMMRRbbInfoList.append((RBBInfo1, RBBInfo2))
 
-"""
+
 #question to RS, why RBB221F/RBB221G/RBB441D is mentioned in the MSMM case for W+G (DUWV1V2 + DUG20), but not in DUG20 single mode case???
 RBBInfo1 = ["RBB221F", "DUWV1102030", "W","17A", (1,)]
 RBBInfo2 = ["RBB221F", "DUG20", "G","17A", (1,)]
@@ -472,7 +472,9 @@ MNSBMMRRbbInfoList.append((RBBInfo1, RBBInfo2))
 RBBInfo1 = ["RBB441D", "DUWV1102030", "W","16A", (1,)]
 RBBInfo2 = ["RBB441D", "DUG20", "G","16A", (1,)]
 MNSBMMRRbbInfoList.append((RBBInfo1, RBBInfo2))
-"""
+
+
+
 
 RBBInfo1 = ["RBB222B", "DUWV1102030", "W","15A", (1,)]
 RBBInfo2 = ["RBB111A", "DUG20", "G","14B", (1,)]
@@ -575,3 +577,30 @@ SNMBMMRRbbInfoListFor5216GW = [ ["RBB101a", "5216", "W", "G",	"16B" ],
                                 ["RBB442f", "5216",	"W", "G",	"16B" ]]
 
 SNMBMMRRbbInfoList += SNMBMMRRbbInfoListFor5216GW
+
+
+#Triple mixed mode
+MNMBMMRRbbInfoList = []
+
+#Baseband 5216 for GSM + LTE and DUW 10 / DUW 11 / DUW 20 / DUW 20 / DUW 30 / DUW 31 / DUW 41 for WCDMA
+
+
+MNMBMMRRbbInfoListForBB5216GLAndDUWV1V2W = [(["RBB221b", "5216", "G", "L", (1,), "17A"],	["RBB221b", "DUWV1102030", "W", (1,), "17A"]),  
+                                            (["RBB221b", "5216", "G", "L", (1,), "17A"],	["RBB221b", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB221b", "5216", "G", "L", (1,), "17A"],	["RBB242b", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB221b", "5216", "G", "L", (1,), "17A"],	["RBB441b", "DUWV1102030", "W", (2,), "17A"]),   
+                                            (["RBB221b", "5216", "G", "L", (1,), "17A"],	["RBB442c", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB221f", "5216", "G", "L", (1,), "17A"],	["RBB221f", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB221g", "5216", "G", "L", (1,), "17A"],	["RBB221g", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB241b", "5216", "G", "L", (1,), "17A"],	["RBB221b", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB242b", "5216", "G", "L", (1,), "17A"],	["RBB221b", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB242b", "5216", "G", "L", (1,2), "17A"],	["RBB242b", "DUWV1102030", "W", (1,2), "17A"]),
+                                            (["RBB422d", "5216", "G", "L", (1,2), "17A"],	["RBB422d", "DUWV1102030", "W", (1,2), "17A"]),
+                                            (["RBB441b", "5216", "G", "L", (1,), "17A"],	["RBB221b", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB441d", "5216", "G", "L", (1,), "17A"],	["RBB441d", "DUWV1102030", "W", (1,), "17A"]),  
+                                            (["RBB442c", "5216", "G", "L", (1,), "17A"],	["RBB221b", "DUWV1102030", "W", (1,), "17A"]),   
+                                            (["RBB442c", "5216", "G", "L", (1,2), "17A"],	["RBB442c", "DUWV1102030", "W", (1,2), "17A"])]
+                                 
+
+MNMBMMRRbbInfoList += MNMBMMRRbbInfoListForBB5216GLAndDUWV1V2W
+

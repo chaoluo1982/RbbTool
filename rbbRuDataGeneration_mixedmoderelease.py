@@ -60,7 +60,7 @@ def generateAllSingleModeRBBRuList():
 
 #generate RBBMM1RUSharedRBBRuList based on RBB MM release info                        
 def generateRBBMNSBMMRRBBRuList():
-    printDirectory = ".\\rbbresult_mixedmoderelease"
+    printDirectory = ".\\rbbresult_mnsbmixedmoderelease"
 
     for MNSBMMRListItem in MNSBMMRRbbInfoList:
         #step 1: generate single mode RBBRUList
@@ -178,7 +178,7 @@ def generateRBBSNMBMMRRBBRuList():
                 
             RBBInfo.append(RBBRuList)
 
-        #step2: generate mixed mode RBBRUList (MNSBMMR 1RU shared) for both RBB involved inthis mixed mode case
+        #step2: generate mixed mode RBBRUList (MNSBMMR 1RU shared) for both RBB involved in this mixed mode case
 
         RBBRuList = RBBInfo[-2]
         peerRBBRuList = RBBInfo[-1]
@@ -186,10 +186,134 @@ def generateRBBSNMBMMRRBBRuList():
         mmrbbClassIntance.generateRBBRuList()
         mmrbbClassIntance.print(printDirectory)
                 
+#generate RBBMNMBMMRRBBRuList based on RBB MM release info
+#Triple Mixed Mode
+#for simplification, assume there is no case, that RU can only support triple mixed mode, but cannnot support 2 standard mixed mode, 
+def generateRBBMNMBMMRRBBRuList():
+    printDirectory = ".\\rbbresult_mnmbmixedmoderelease"
+
+    for MNMBMMRListItem in MNMBMMRRbbInfoList:
+        
+        #step 1: generate mixed mode baseband RBBRUList
+        mbRBBRuList = []
+        mbrbbInfo = MNMBMMRListItem[0]
+
+        mbrbb = mbrbbInfo[0].upper()
+        mbduTypeInfo = mbrbbInfo[1]
+        mbran = mbrbbInfo[2]
+        mbpeerran = mbrbbInfo[3]
+        mbrelease = mbrbbInfo[5]
+        mbsharedRuNumberList = mbrbbInfo[4]
+        mbranList = [mbran, mbpeerran]
+        
+        for ranItem in mbranList:
+            RBBRuList = []
+            #mixed mode baseband dutype info need add ran
+            duType = mbduTypeInfo + ranItem
+
+        #step 1: generate single mode RBBRUList with RAN checking        
+            if mbrbb in RBB1RUMap.keys() or mbrbb in RBB3RUMap.keys() or mbrbb in RBB4RUMap.keys():
+                if mbrbb in RBB1RUMap.keys():
+                    className = RBB1RUMap[mbrbb][1]
+                    ruTypeList = RBB1RUMap[mbrbb][0]
+                if mbrbb in RBB3RUMap.keys():
+                    className = RBB3RUMap[mbrbb][1]
+                    ruTypeList = RBB3RUMap[mbrbb][0]
+                if mbrbb in RBB4RUMap.keys():
+                    className = RBB4RUMap[mbrbb][1]
+                    ruTypeList = RBB4RUMap[mbrbb][0]
+
+
+                #here we do not care whether the RBB is released or not in the SNSMR case
+                rbbrelease = ""
+                rbbClassInstance = getattr(thisModule, className)(mbrbb, rbbrelease, duType, ranItem, ruTypeList, RuDataList)
+                rbbClassInstance.generateRBBRuListWithoutRanCheck()
+                RBBRuList = rbbClassInstance.RBBRuList
+                
+            if mbrbb in RBB2RUMap.keys():
+                className = RBB2RUMap[mbrbb][2]
+                ru1TypeList = RBB2RUMap[mbrbb][0]
+                ru2TypeList = RBB2RUMap[mbrbb][1]
+
+                #here we do not care whether the RBB is released or not in the SNSMR case
+                rbbrelease = ""
+                rbbClassInstance = getattr(thisModule, className)(mbrbb, rbbrelease, duType, ranItem, ru1TypeList, ru2TypeList, RuDataList)
+                rbbClassInstance.generateRBBRuListWithoutRanCheck()
+                RBBRuList = rbbClassInstance.RBBRuList
+                
+            mbrbbInfo.append(RBBRuList)
+
+            
+
+        #step2: generate mixed mode baseband RBBRUList 
+        mbRBBRuList = mbrbbInfo[-2]
+        mbpeerRBBRuList = mbrbbInfo[-1]
+        mmrbbClassIntance = RBBSNMBMMR(mbrbb, mbduTypeInfo, mbran, "", mbRBBRuList,  mbpeerran, mbpeerRBBRuList)
+        mmrbbClassIntance.generateRBBRuList()
+        
+        mbRBBRuList = mmrbbClassIntance.RBBRuList
+        mbran = getRanCombination(mbran, mbpeerran, mbRBBRuList[0][0])
+
+
+        #step3: handle the single baseband RBB
+        sbRBBRuList =[]
+        sbrbbInfo = MNMBMMRListItem[1]
+        sbrbb = sbrbbInfo[0].upper()
+        sbran = sbrbbInfo[2]
+        sbduType = sbrbbInfo[1]
+        sbrelease = sbrbbInfo[4]
+        sbsharedRuNumberList = sbrbbInfo[3]
+            
+        if sbrbb in RBB1RUMap.keys() or sbrbb in RBB3RUMap.keys() or sbrbb in RBB4RUMap.keys():
+            if sbrbb in RBB1RUMap.keys():
+                className = RBB1RUMap[sbrbb][1]
+                ruTypeList = RBB1RUMap[sbrbb][0]
+            if sbrbb in RBB3RUMap.keys():
+                className = RBB3RUMap[sbrbb][1]
+                ruTypeList = RBB3RUMap[sbrbb][0]
+            if sbrbb in RBB4RUMap.keys():
+                className = RBB4RUMap[sbrbb][1]
+                ruTypeList = RBB4RUMap[sbrbb][0]
+
+                    #here we do not care whether the RBB is released or not in the SNSMR case
+
+                    
+
+            rbbrelease = ""
+            rbbClassInstance = getattr(thisModule, className)(sbrbb, rbbrelease, sbduType, sbran, ruTypeList, RuDataList)
+            rbbClassInstance.generateRBBRuListWithoutRanCheck()
+            sbRBBRuList = rbbClassInstance.RBBRuList
+
+        if sbrbb in RBB2RUMap.keys():
+            className = RBB2RUMap[sbrbb][2]
+            ru1TypeList = RBB2RUMap[sbrbb][0]
+            ru2TypeList = RBB2RUMap[sbrbb][1]
+                #here we do not care whether the RBB is released or not in the SNSMR case
+
+            rbbrelease = ""
+            rbbClassInstance = getattr(thisModule, className)(sbrbb, rbbrelease, sbduType, sbran, ru1TypeList, ru2TypeList, RuDataList)
+            rbbClassInstance.generateRBBRuListWithoutRanCheck()
+            sbRBBRuList = rbbClassInstance.RBBRuList
+
+
+        #step4: generate triple mixed mode RBBRUList
+                
+                
+      
+        mmrbbClassIntance = RBBMNMBMMR(mbrbb, mbduTypeInfo, mbran, mbrelease, mbRBBRuList, mbsharedRuNumberList, sbrbb, sbduType, sbran, sbrelease, sbRBBRuList, sbsharedRuNumberList)
+        mmrbbClassIntance.generateRBBRuList()
+        mmrbbClassIntance.print(printDirectory)
+
+        mmrbbClassIntance = RBBMNMBMMR(sbrbb, sbduType, sbran, sbrelease, sbRBBRuList, sbsharedRuNumberList, mbrbb, mbduTypeInfo, mbran, mbrelease, mbRBBRuList, mbsharedRuNumberList)
+        mmrbbClassIntance.generateRBBRuList()
+        mmrbbClassIntance.print(printDirectory)
+
 ######################################## main program try to call function to generate result ###################################################################
 
-generateAllSingleModeRBBRuList()
+#generateAllSingleModeRBBRuList()
 
-#generateRBBMNSBMMRRBBRuList()
+generateRBBMNSBMMRRBBRuList()
 
 #generateRBBSNMBMMRRBBRuList()
+
+#generateRBBMNMBMMRRBBRuList()

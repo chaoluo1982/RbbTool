@@ -1,0 +1,72 @@
+WithoutBandInfo:
+RU1: (RuType:Radio2212), RU2: (RuType:Radio2212),  W17A
+RU1: (RuType:RRUS12), RU2: (RuType:Radio2217),  W17A
+RU1: (RuType:Radio2219), RU2: (RuType:Radio2212),  W17A?
+RU1: (RuType:Radio2212), RU2: (RuType:Radio2217),  W17A
+RU1: (RuType:Radio2219), RU2: (RuType:Radio2217),  W17A?
+RU1: (RuType:Radio2212), RU2: (RuType:RRUS11),  W17A?
+RU1: (RuType:RRUS12), RU2: (RuType:RRUS13),  W17A
+RU1: (RuType:RRUS13), RU2: (RuType:Radio2219),  W17A?
+RU1: (RuType:Radio2212), RU2: (RuType:RRUS12),  W17A
+RU1: (RuType:RRUS12), RU2: (RuType:RRUS11),  W17A
+RU1: (RuType:RRUS12), RU2: (RuType:RRUS12),  W17A
+RU1: (RuType:RRUS12), RU2: (RuType:Radio2219),  W17A?
+RU1: (RuType:Radio2212), RU2: (RuType:Radio2219),  W17A?
+RU1: (RuType:RRUS12), RU2: (RuType:Radio2212),  W17A
+RU1: (RuType:RRUS13), RU2: (RuType:RRUS13),  W17A
+RU1: (RuType:RRUS13), RU2: (RuType:RRUS12),  W17A
+RU1: (RuType:Radio2219), RU2: (RuType:RRUS12),  W17A?
+RU1: (RuType:Radio2219), RU2: (RuType:Radio2219),  W17A
+RU1: (RuType:Radio2219), RU2: (RuType:RRUS13),  W17A?
+
+
+WithBandInfo:
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:Radio2217, Band:5, KRC:KRC 161 566/1),  W17A
+RU1: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1), RU2: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1),  W17A?
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1),  W17A?
+RU1: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1), RU2: (RuType:Radio2217, Band:8, KRC:KRC 161 548/1),  W17A?
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:RRUS11, Band:5, KRC:KRC 161 285/1),  W17A?
+RU1: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2), RU2: (RuType:Radio2212, Band:8, KRC:KRC 161 650/2),  W17A
+RU1: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2), RU2: (RuType:Radio2217, Band:8, KRC:KRC 161 548/1),  W17A
+RU1: (RuType:Radio2219, Band:8A, KRC:KRC 161 618/1), RU2: (RuType:Radio2219, Band:8A, KRC:KRC 161 618/1),  W17A?
+RU1: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2), RU2: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1),  W17A
+RU1: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2), RU2: (RuType:RRUS11, Band:2, KRC:KRC 161 276/1),  W17A
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:Radio2212, Band:5, KRC:KRC 161 652/2),  W17A?
+RU1: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2), RU2: (RuType:Radio2217, Band:8, KRC:KRC 161 548/2),  W17A
+RU1: (RuType:RRUS12, Band:8A, KRC:KRC 161 262/4), RU2: (RuType:RRUS12, Band:8A, KRC:KRC 161 262/4),  W17A
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1),  W17A?
+RU1: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2), RU2: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1),  W17A?
+RU1: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1), RU2: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1),  W17A?
+RU1: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1), RU2: (RuType:Radio2212, Band:8, KRC:KRC 161 650/2),  W17A?
+RU1: (RuType:RRUS13, Band:8A, KRC:KRC 161 560/2), RU2: (RuType:RRUS12, Band:8A, KRC:KRC 161 262/4),  W17A
+RU1: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1), RU2: (RuType:Radio2217, Band:8, KRC:KRC 161 548/2),  W17A
+RU1: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1), RU2: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1),  W17A?
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:RRUS11, Band:5, KRC:KRC 161 285/2),  W17A
+RU1: (RuType:RRUS12, Band:8A, KRC:KRC 161 262/4), RU2: (RuType:RRUS13, Band:8A, KRC:KRC 161 560/2),  W17A
+RU1: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2), RU2: (RuType:Radio2217, Band:2, KRC:KRC 161 563/1),  W17A
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:Radio2212, Band:5, KRC:KRC 161 652/2),  W17A?
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:RRUS11, Band:5, KRC:KRC 161 285/2),  W17A?
+RU1: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2), RU2: (RuType:RRUS11, Band:2, KRC:KRC 161 276/2),  W17A
+RU1: (RuType:Radio2219, Band:0A, KRC:KRC 161 625/1), RU2: (RuType:Radio2219, Band:0A, KRC:KRC 161 625/1),  W17A
+RU1: (RuType:Radio2219, Band:8A, KRC:KRC 161 618/1), RU2: (RuType:RRUS13, Band:8A, KRC:KRC 161 560/2),  W17A?
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:Radio2217, Band:5, KRC:KRC 161 566/1),  W17A?
+RU1: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2), RU2: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2),  W17A
+RU1: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1), RU2: (RuType:Radio2217, Band:8, KRC:KRC 161 548/1),  W17A
+RU1: (RuType:RRUS13, Band:8A, KRC:KRC 161 560/2), RU2: (RuType:RRUS13, Band:8A, KRC:KRC 161 560/2),  W17A
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2),  W17A?
+RU1: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1), RU2: (RuType:Radio2217, Band:8, KRC:KRC 161 548/2),  W17A?
+RU1: (RuType:Radio2219, Band:8A, KRC:KRC 161 618/1), RU2: (RuType:RRUS12, Band:8A, KRC:KRC 161 262/4),  W17A?
+RU1: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1), RU2: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1),  W17A
+RU1: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2), RU2: (RuType:RRUS12, Band:2, KRC:KRC 161 299/2),  W17A
+RU1: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1), RU2: (RuType:RRUS12, Band:8, KRC:KRC 161 262/3),  W17A
+RU1: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1), RU2: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2),  W17A?
+RU1: (RuType:RRUS12, Band:8A, KRC:KRC 161 262/4), RU2: (RuType:Radio2219, Band:8A, KRC:KRC 161 618/1),  W17A?
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2),  W17A
+RU1: (RuType:RRUS13, Band:8A, KRC:KRC 161 560/2), RU2: (RuType:Radio2219, Band:8A, KRC:KRC 161 618/1),  W17A?
+RU1: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2), RU2: (RuType:RRUS12, Band:8, KRC:KRC 161 262/3),  W17A
+RU1: (RuType:Radio2219, Band:8, KRC:KRC 161 670/1), RU2: (RuType:RRUS12, Band:8, KRC:KRC 161 262/3),  W17A?
+RU1: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1), RU2: (RuType:Radio2212, Band:8, KRC:KRC 161 650/2),  W17A
+RU1: (RuType:Radio2212, Band:8, KRC:KRC 161 650/1), RU2: (RuType:RRUS12, Band:8, KRC:KRC 161 262/2),  W17A
+RU1: (RuType:Radio2212, Band:5, KRC:KRC 161 652/1), RU2: (RuType:Radio2217, Band:5, KRC:KRC 161 566/2),  W17A?
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:RRUS11, Band:5, KRC:KRC 161 285/1),  W17A
+RU1: (RuType:RRUS12, Band:5, KRC:KRC 161 321/2), RU2: (RuType:Radio2217, Band:5, KRC:KRC 161 566/2),  W17A

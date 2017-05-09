@@ -517,6 +517,9 @@ class RBBMNSBMMR(RBB):
             self.rbbName += "RU" + str(sharedRuNumber)
         self.rbbName += "_In_" + self.peerduType + "_" + self.peerran + "_" + self.peerrbbName
 
+        #remove release info
+        for (i, RBBRuListItem) in enumerate(RBBRuList):
+                RBBRuList[i][-1] = ""
         
         
     def generateRBBRuList(self):
@@ -560,12 +563,15 @@ class RBBMNSBMMR(RBB):
                     break
             else:
                 #go through all self.sharedRuNumberList checking, all conditions are OK
-                if release > RBBRuListItem[-1]:
-                    RBBRuListItem[-1] = release
                 newRBBRuList.append(RBBRuListItem)
-
                 
-        self.RBBRuList = newRBBRuList        
+        self.RBBRuList = newRBBRuList
+
+        #update release info
+        for (i, RBBRuListItem) in enumerate(self.RBBRuList):
+            release = getReleaseInfo(RBBRuListItem[:-1], self.duType, self.ran, self.ranmmrelease)
+            self.RBBRuList[i][-1] = release
+
 
 ######################################################################################################################################
 #RBBSNMBMMR
@@ -576,12 +582,24 @@ class RBBSNMBMMR(RBB):
         self.duType = duType
         self.ran = ran
         self.mmrelease = mmrelease
-        self.RBBRuList = RBBRuList
+
         self.peerran = peerran
         self.peerRBBRuList = peerRBBRuList
-        self.RBBRuList += self.peerRBBRuList 
-
-
+        
+        #sum up all RBB from both self and peer, remove the identical ones, and remove release info from list
+        for (i, RBBRuListItem) in enumerate(RBBRuList):
+                RBBRuList[i][-1] = ""
+        newPeerRBBRuList = []
+        for peerRBBRuListItem in peerRBBRuList:
+            peerRBBRuListItem[-1] = "" 
+            for RBBRuListItem in RBBRuList:
+                if (peerRBBRuListItem == RBBRuListItem):
+                    break
+            else:
+                newPeerRBBRuList.append(peerRBBRuListItem)
+                      
+            
+        self.RBBRuList = RBBRuList + newPeerRBBRuList 
         self.rbbName += "_mixedmodebasband_" + self.peerran 
 
         
@@ -607,18 +625,130 @@ class RBBSNMBMMR(RBB):
         
 
         newRBBRuList = []
-        #shared RU should support RAN combination and supported by peer(DU,RAN)
+        #shared RU should support RAN combination and supported by both (DU,RAN)
         for RBBRuListItem in self.RBBRuList:
-            #here we only check whether any of the item support RAN combination
+            #here we only check whether any of the item support RAN combination, no check regarding whether this "shared" RU is also supported by both (DU,RAN)
             for ru in RBBRuListItem[0:-1]:
                 if hasRanSupport(ru[ranCombination]):
-                    mmrelease = RBBRuListItem[-1][1:]
-                    if self.mmrelease > mmrelease:
-                        RBBRuListItem[-1] = self.mmrelease
-                    else:
-                        RBBRuListItem[-1] = mmrelease
                     newRBBRuList.append(RBBRuListItem)
                     break
                 
-        self.RBBRuList = newRBBRuList        
-            
+        self.RBBRuList = newRBBRuList
+
+        #update release info
+        for (i, RBBRuListItem) in enumerate(self.RBBRuList):
+            duType1 = self.duType + self.ran
+            release1 = getReleaseInfo(RBBRuListItem[:-1], duType1, self.ran, self.mmrelease)
+            release1 = release1[1:]
+            duType2 = self.duType + self.peerran
+            release2 = getReleaseInfo(RBBRuListItem[:-1], duType2, self.peerran, self.mmrelease)
+            release2 = release2[1:]
+            if release1 > release2:
+                self.RBBRuList[i][-1] = release1
+            else:
+                self.RBBRuList[i][-1] = release2
+           
+
+
+############################################################################################################################################################################################
+class RBBMNMBMMR(RBB):
+    
+    def __init__(self, rbbName, duType, ran, ranmmrelease, RBBRuList, sharedRuNumberList, peerrbbName, peerduType, peerran, peerranmmrelease, peerRBBRuList, peersharedRuNumberList):
+        self.rbbName = rbbName 
+        self.duType = duType
+        self.ran = ran
+        self.ranmmrelease = ranmmrelease
+        self.RBBRuList = RBBRuList
+        self.sharedRuNumberList = sharedRuNumberList
+        self.peerrbbName = peerrbbName 
+        self.peerduType = peerduType
+        self.peerran = peerran
+        self.peerranmmrelease = peerranmmrelease
+        self.peerRBBRuList = peerRBBRuList
+        self.peersharedRuNumberList = peersharedRuNumberList
+
+        
+        if len(sharedRuNumberList) != len(peersharedRuNumberList):
+            raise Exception("this is an error for shared RU number list!")
+        self.rbbName += "_"
+        for sharedRuNumber in self.sharedRuNumberList:
+            self.rbbName += "RU" + str(sharedRuNumber)
+        self.rbbName += "_MixedModeWith_"
+        for sharedRuNumber in self.peersharedRuNumberList:
+            self.rbbName += "RU" + str(sharedRuNumber)
+        self.rbbName += "_In_" + self.peerduType + "_" + self.peerran + "_" + self.peerrbbName
+
+        #remove release info
+        for (i, RBBRuListItem) in enumerate(RBBRuList):
+                RBBRuList[i][-1] = ""
+        
+    def generateRBBRuList(self):
+        
+        RBBRuListItem = []
+        peerRBBRuListItem = []
+
+        ranCombination = getRanCombination(self.ran, self.peerran, self.RBBRuList[0][0])
+    
+                
+        #non-shared RU must support the RAN
+        newRBBRuList = []
+        for RBBRuListItem in self.RBBRuList:            
+            for (index, ru) in enumerate(RBBRuListItem[0:-1]):
+                ruNumber = index + 1
+                if ruNumber not in self.sharedRuNumberList:                 
+                    if  (not hasRanSupport(ru[self.ran])):
+                        break
+            else:
+                newRBBRuList.append(RBBRuListItem)                
+        self.RBBRuList = newRBBRuList
+        
+
+        newRBBRuList = []
+        #shared RU should support RAN combination and supported by peer(DU,RAN)
+        for RBBRuListItem in self.RBBRuList:
+            isValidRBBRuListItem = 0
+            for (i, sharedRuNumber) in enumerate(self.sharedRuNumberList):
+                if (not hasRanSupport(RBBRuListItem[sharedRuNumber - 1][ranCombination])):
+                    #get out this for loop for self.sharedRuNumberList because RAN combination does not support it
+                    break
+                
+                for peerRBBRuListItem in self.peerRBBRuList:
+                    #for shared RU number list like (2,3) will be compared with peer (1,2), and RU2 will be mapping to peer RBB RU1 just as the list sequence
+                    if (RBBRuListItem[sharedRuNumber - 1] == peerRBBRuListItem[self.peersharedRuNumberList[i] - 1]):
+                        #break out from this inner loop for peer RBB RU, and continue outer for loop
+                        break
+                else:
+                    #get out this for loop for self.sharedRuNumberList because RU is not supported by peer RBB
+                    break
+            else:
+                #go through all self.sharedRuNumberList checking, all conditions are OK
+                newRBBRuList.append(RBBRuListItem)
+                
+        self.RBBRuList = newRBBRuList
+
+
+                
+        #need check whether ran is actually ran combiantion
+        if "+" not in self.ran:
+            release = self.ran + self.ranmmrelease
+        else:
+            release = self.ranmmrelease
+
+        #update release info
+        for (i, RBBRuListItem) in enumerate(self.RBBRuList):
+            if "+" in self.ran:
+                [ran1, ran2] = self.ran.split("+")            
+                duType1 = self.duType + ran1
+                release1 = getReleaseInfo(RBBRuListItem[:-1], duType1, ran1, self.ranmmrelease)
+                release1 = release1[1:]
+                duType2 = self.duType + ran2
+                release2 = getReleaseInfo(RBBRuListItem[:-1], duType2, ran2, self.ranmmrelease)
+                release2 = release2[1:]
+                if release1 > release2:
+                    self.RBBRuList[i][-1] = release1
+                else:
+                    self.RBBRuList[i][-1] = release2
+            else:
+                release = getReleaseInfo(RBBRuListItem[:-1], self.duType, self.ran, self.ranmmrelease)
+                self.RBBRuList[i][-1] = release
+                
